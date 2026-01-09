@@ -1,0 +1,16 @@
+[package]
+name = "karmist"
+edition = "2024"
+version = "1.0.0"
+authors = ["sarkar-segfault"]
+description = "todoist, but for gigachads"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/sarkar-segfault/karmist"
+homepage = "https://crates.io/crates/karmist"
+documentation = "https://docs.rs/karmist"
+readme = "README.md"
+keywords = ["cli", "app", "interactive", "todo", "fun"]
+categories = ["command-line-utilities", "command-line-interface", "text-processing"]
+
+[dependencies]
+argh = { version = "0.1.13", default-features = false, features = ["help"] }
