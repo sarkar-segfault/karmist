@@ -7,7 +7,7 @@ pub struct Options {
         option,
         short = 'd',
         long = "database",
-        default = "\".karmist.json\".to_string()",
+        default = "format!(\"{:?}/.karmist.json\", std::env::home_dir().unwrap_or_else(|| fatal!(\"failed to acquire home directory\")))",
         description = "the task database"
     )]
     pub db: String,
@@ -19,22 +19,25 @@ pub struct Options {
 #[derive(FromArgs)]
 #[argh(subcommand)]
 pub enum Command {
-    Add(AddCommand),
-    List(ListCommand),
+    Create(CreateCommand),
+    Read(ReadCommand),
     Update(UpdateCommand),
     Remove(RemoveCommand),
 }
 
 #[derive(FromArgs)]
-#[argh(subcommand, name = "add", description = "add a task")]
-pub struct AddCommand {
+#[argh(subcommand, name = "create", description = "create a task")]
+pub struct CreateCommand {
     #[argh(positional)]
     pub id: Option<String>,
 }
 
 #[derive(FromArgs)]
-#[argh(subcommand, name = "list", description = "list all tasks")]
-pub struct ListCommand {}
+#[argh(subcommand, name = "read", description = "read one, or all tasks")]
+pub struct ReadCommand {
+    #[argh(positional)]
+    pub id: Option<String>,
+}
 
 #[derive(FromArgs)]
 #[argh(subcommand, name = "update", description = "update a task")]
