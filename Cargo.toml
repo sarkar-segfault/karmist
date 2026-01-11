@@ -1,7 +1,7 @@
 [package]
 name = "karmist"
 edition = "2024"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["sarkar-segfault"]
 description = "todoist, but for gigachads"
 license = "GPL-3.0-or-later"
